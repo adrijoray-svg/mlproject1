@@ -84,9 +84,9 @@ jobs:
         run: |
           docker pull ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_REPOSITORY_NAME }}:latest
          
-      # - name: Stop and remove  container if running
-      #   run: |
-      #    docker ps -q --filter "name=mltest" | grep -q . && docker stop mltest && docker rm -fv mltest
+      - name: Stop and remove  container if running
+        run: |
+         docker ps -q --filter "name=mltest" | grep -q . && docker stop mltest && docker rm -fv mltest
        
       - name: Run Docker Image to serve users
         run: |
